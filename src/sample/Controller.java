@@ -3,6 +3,8 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +37,17 @@ public class Controller {
     }
 
     @FXML
-    public void cleanUpRawTextFields() {
+    public void copyWhitelistData() {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+
+        String whitelistDataText = whitelistData.getText();
+
+        content.putString(whitelistDataText);
+        clipboard.setContent(content);
+    }
+
+    private void cleanUpRawTextFields() {
         String endpointsText = rawEndpoint.getText();
 
         String[] splitRowEndpoints = endpointsText.split(NEW_LINE_REGEXP);
@@ -49,6 +61,8 @@ public class Controller {
                                               .collect(Collectors.joining());
 
         //TODO: Add delete duplicate.
+
+        //TODO: Add string sorting.
 
         rawEndpoint.setText(resultDataWhitelist);
     }
