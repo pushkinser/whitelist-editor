@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="985.0"
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller">
+    <TextArea fx:id="rawEndpoint" layoutX="24.0" layoutY="33.0" prefHeight="494.0" prefWidth="938.0" wrapText="true"/>
+    <TextField fx:id="whitelistData" layoutX="73.0" layoutY="543.0" prefHeight="31.0" prefWidth="890.0"/>
+    <Button layoutX="25.0" layoutY="543.0" minWidth="30.0" mnemonicParsing="false"
+            onMouseClicked="#convertToWhitelistData" prefHeight="30.9998779296875" prefWidth="34.0" text="↓">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Button>
+    <MenuBar layoutX="0.0" layoutY="0.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Edit">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#cleanUpRawTextFields" text="Clean up"/>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+</AnchorPane>
