@@ -38,6 +38,8 @@ public class Controller {
 
     @FXML
     public void copyWhitelistData() {
+        convertToWhitelistData();
+
         final Clipboard clipboard = Clipboard.getSystemClipboard();
         final ClipboardContent content = new ClipboardContent();
 
