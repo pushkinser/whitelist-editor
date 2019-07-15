@@ -14,6 +14,7 @@ public class Controller {
 
     private static final String NEW_LINE_REGEXP = "\n";
     private static final String RUSSIAN_WORD_REGEXP = "[А-я]";
+    private static final String RUSSIAN_WORD_AND_SLASH_REGEXP = "[А-я]\\/[А-я]";
     private static final String WHITESPACE = "\\s+";
     private static final String NEW_LINE = "\\n";
 
@@ -56,6 +57,7 @@ public class Controller {
         List<String> endpoints = Arrays.asList(splitRowEndpoints);
 
         String resultDataWhitelist = endpoints.stream()
+                                              .map(s -> s.replaceAll(RUSSIAN_WORD_AND_SLASH_REGEXP, ""))
                                               .map(s -> s.replaceAll(RUSSIAN_WORD_REGEXP, ""))
                                               .map(s -> s.replaceAll(WHITESPACE, ""))
                                               .filter(s -> !s.isEmpty())
