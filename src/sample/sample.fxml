@@ -24,9 +24,9 @@
       <Font size="10.0" />
     </font>
   </Button>
-  <TextField layoutX="24.0" layoutY="558.0" prefWidth="200.0" />
+  <TextField disable="true" layoutX="24.0" layoutY="558.0" prefWidth="200.0" />
   <Label layoutX="24.0" layoutY="535.0" text="Namespace" />
-  <ComboBox layoutX="294.0" layoutY="560.0" prefHeight="21.0" prefWidth="140.0">
+  <ComboBox disable="true" layoutX="294.0" layoutY="560.0" prefHeight="21.0" prefWidth="140.0">
     <items>
       <FXCollections fx:factory="observableArrayList">
         <String fx:value="Item 1" />
