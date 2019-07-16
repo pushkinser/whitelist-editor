@@ -1,11 +1,13 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 
+import java.awt.event.ActionEvent;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +25,18 @@ public class Controller {
 
     @FXML
     private TextField whitelistData;
+
+    @FXML
+    private Label rawCount;
+
+    @FXML
+    public void initialize() {
+        rawEndpoint.textProperty().addListener((observable, oldValue, newValue) -> {
+            String endpointText = rawEndpoint.getText();
+            String[] splitRowEndpoints = endpointText.split(NEW_LINE_REGEXP);
+            rawCount.setText(String.valueOf(splitRowEndpoints.length));
+        });
+    }
 
     @FXML
     public void convertToWhitelistData() {
@@ -62,9 +76,8 @@ public class Controller {
                                               .map(s -> s.replaceAll(WHITESPACE, ""))
                                               .filter(s -> !s.isEmpty())
                                               .map(endpoint -> endpoint + NEW_LINE_REGEXP)
+                                              .distinct()
                                               .collect(Collectors.joining());
-
-        //TODO: Add delete duplicate.
 
         //TODO: Add string sorting.
 
